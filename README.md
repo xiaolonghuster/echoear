@@ -1,3 +1,17 @@
+# EchoEar 喵伴统一固件
+
+本仓库维护一套共享界面与应用代码，支持 **Waveshare ESP32-S3-Touch-AMOLED-1.75-B** 和 **VIEWE SmartRing 1.75**。语音服务使用小智。
+
+- [固件下载与发布说明](https://github.com/xiaolonghuster/echoear/releases)
+- [板型选择、编译及安装说明](main/echoear/README.md)
+- [源码来源与构建对应关系](ECHOEAR_RELEASE.md)
+
+在仓库根目录运行 `./scripts/echoear.sh build all` 可生成两种安装包。两个板型使用不同硬件驱动，固件不可互刷。当前为预发布验证阶段，具体实测范围见 Release。
+
+---
+
+以下保留上游项目说明。
+
 # An MCP-based Chatbot
 
 (English | [中文](README_zh.md) | [日本語](README_ja.md))
