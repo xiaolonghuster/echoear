@@ -1,0 +1,19 @@
+{
+    "type": "echoear-waveshare-1.75b",
+    "target": "esp32s3",
+    "builds": [
+        {
+            "name": "echoear-waveshare-1.75b",
+            "sdkconfig_append": [
+                "CONFIG_BOARD_TYPE_ECHOEAR_WAVESHARE_1_75B=y",
+                "CONFIG_USE_WECHAT_MESSAGE_STYLE=n",
+                "CONFIG_USE_DEVICE_AEC=y",
+                "CONFIG_ESPTOOLPY_FLASHMODE_DIO=y",
+                "CONFIG_FLASH_CUSTOM_ASSETS=y",
+                "CONFIG_CUSTOM_ASSETS_FILE=\"../../assets/custom/assets-with-font.bin\"",
+                "CONFIG_LV_USE_KEYBOARD=y",
+                "CONFIG_ECHOEAR_UI_REVIEW=n"
+            ]
+        }
+    ]
+}
