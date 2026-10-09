@@ -1076,6 +1076,12 @@ def _select_variants_for_changes(
         path = raw_path.strip()
         if not path:
             continue
+        if (path == "external/echoear-core" or path.startswith("external/echoear-core/") or
+                path in {".gitmodules", "main/echoear_xiaozhi_host.cc", "scripts/echoear.py",
+                         "scripts/echoear.sh", "scripts/prepare_echoear_ci_assets.py"}):
+            affected.update(board for board in known_boards if board in {
+                "echoear-waveshare-1.75b", "echoear-viewe-1.75"})
+            continue
         if (path in global_paths or path.startswith("components/") or
                 path.startswith("partitions/") or
                 path.startswith("sdkconfig.defaults") or

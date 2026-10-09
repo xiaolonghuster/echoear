@@ -928,10 +928,10 @@ file(GLOB BOARD_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/boards/${BOARD_DIR}/*.c
 )
 list(APPEND SOURCES ${BOARD_SOURCES})
-if(CONFIG_BOARD_TYPE_ECHOEAR_WAVESHARE_1_75B OR CONFIG_BOARD_TYPE_ECHOEAR_VIEWE_1_75)
-    file(GLOB ECHOEAR_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/echoear/*.cc")
-    list(APPEND SOURCES ${ECHOEAR_SOURCES})
-    list(APPEND INCLUDE_DIRS "echoear" "boards/${BOARD_DIR}")
+if(CONFIG_ECHOEAR_UI)
+    include("${CMAKE_CURRENT_SOURCE_DIR}/../external/echoear-core/cmake/xiaozhi.cmake")
+    list(APPEND SOURCES ${ECHOEAR_XIAOZHI_SOURCES} "echoear_xiaozhi_host.cc")
+    list(APPEND INCLUDE_DIRS "${ECHOEAR_XIAOZHI_INCLUDE_DIR}" "boards/${BOARD_DIR}")
 endif()
 
 # Select one audio engine for each chip family
@@ -1123,6 +1123,7 @@ idf_component_register(SRCS ${SOURCES}
                     INCLUDE_DIRS ${INCLUDE_DIRS}
                     WHOLE_ARCHIVE
                     PRIV_REQUIRES
+                        echoear-core
                         esp_pm
                         esp_psram
                         esp_netif

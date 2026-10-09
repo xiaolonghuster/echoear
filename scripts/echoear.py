@@ -45,6 +45,9 @@ def load_package(folder, board):
 def build(board, output):
     if not os.environ.get('IDF_PATH'):
         raise ValueError('Source ESP-IDF export.sh before building')
+    core = ROOT / 'external/echoear-core'
+    if not (core / 'include/echoear_platform.h').is_file():
+        raise ValueError('Initialize core first: git submodule update --init --recursive')
     target = BOARDS[board]
     subprocess.run([sys.executable, 'scripts/build.py', target, '--name', target,
                     '--language', 'zh-CN'], cwd=ROOT, check=True)
@@ -60,6 +63,8 @@ def build(board, output):
     temp.mkdir(parents=True)
     manifest = {'board': target, 'chip': 'esp32s3', 'review_mode': False,
                 'commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
+                'core_commit': subprocess.check_output(['git', '-C', str(core), 'rev-parse', 'HEAD'], text=True).strip(),
+                'core_dirty': bool(subprocess.check_output(['git', '-C', str(core), 'status', '--porcelain'], text=True)),
                 'dirty': bool(subprocess.check_output(['git', 'status', '--porcelain'], cwd=ROOT, text=True)),
                 'write_flash_args': args['write_flash_args'], 'files': []}
     for offset, name in args['flash_files'].items():

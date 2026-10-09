@@ -53,6 +53,13 @@ class CiSelectionTests(unittest.TestCase):
                     build._select_variants_for_changes(self.variants, [path]), expected
                 )
 
+    def test_echoear_core_updates_build_both_hardware_variants(self):
+        expected = {"echoear-waveshare-1.75b", "echoear-viewe-1.75"}
+        for path in ("external/echoear-core", ".gitmodules", "main/echoear_xiaozhi_host.cc"):
+            with self.subTest(path=path):
+                selected = build._select_variants_for_changes(self.variants, [path])
+                self.assertEqual({v["board"] for v in selected}, expected)
+
     def test_board_only_includes_all_its_variants(self):
         board = "waveshare/esp32-p4-wifi6-touch-lcd"
         selected = build._select_variants_for_changes(

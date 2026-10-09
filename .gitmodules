@@ -1,0 +1,3 @@
+[submodule "external/echoear-core"]
+	path = external/echoear-core
+	url = https://github.com/xiaolonghuster/echoear-core.git

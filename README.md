@@ -2,8 +2,9 @@
 
 本仓库维护一套共享界面与应用代码，支持 **Waveshare ESP32-S3-Touch-AMOLED-1.75-B** 和 **VIEWE SmartRing 1.75**。语音服务使用小智。
 
+- [公共模块 echoear-core](https://github.com/xiaolonghuster/echoear-core)：模型、资源与可选小智界面适配层，通过固定提交的 Git 子模块复用。
 - [固件下载与发布说明](https://github.com/xiaolonghuster/echoear/releases)
-- [板型选择、编译及安装说明](main/echoear/README.md)
+- [板型选择、编译及安装说明](docs/echoear.md)
 - [源码来源与构建对应关系](ECHOEAR_RELEASE.md)
 
 在仓库根目录运行 `./scripts/echoear.sh build all` 可生成两种安装包。两个板型使用不同硬件驱动，固件不可互刷。当前为预发布验证阶段，具体实测范围见 Release。

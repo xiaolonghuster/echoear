@@ -123,4 +123,4 @@ Validation: hardware framebuffer captures of launcher, settings, sound, display,
 
 ## Unified source tree
 
-UI, apps and tests now live in `main/echoear/`; this folder owns only this board's hardware adaptation. See [shared build and installation guide](../../echoear/README.md). Use `python scripts/echoear.py build all` from the repository root to produce separate packages from one source tree. The old VIEWE worktree is a historical reference, not the development entry point.
+UI, apps and tests now live in `external/echoear-core/`; this folder owns only this board's hardware adaptation. See [shared build and installation guide](../../../docs/echoear.md). Use `python scripts/echoear.py build all` from the repository root to produce separate packages from one source tree. The old VIEWE worktree is a historical reference, not the development entry point.

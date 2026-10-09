@@ -1160,9 +1160,17 @@ endmenu
 
 endmenu
 
+config ECHOEAR_UI
+    bool "Use shared EchoEar UI integration"
+    default y if BOARD_TYPE_ECHOEAR_WAVESHARE_1_75B || BOARD_TYPE_ECHOEAR_VIEWE_1_75
+    default n
+    help
+        Compile the external EchoEar core Xiaozhi adapter. The selected board
+        must provide echoear_target.h and compatible display/audio drivers.
+
 config ECHOEAR_UI_REVIEW
     bool "Capture EchoEar UI pages to serial for development review"
-    depends on BOARD_TYPE_ECHOEAR_WAVESHARE_1_75B || BOARD_TYPE_ECHOEAR_VIEWE_1_75
+    depends on ECHOEAR_UI
     default n
     help
         Temporarily navigates UI pages and prints JPEG snapshots as hex to serial.
